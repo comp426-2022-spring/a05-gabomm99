@@ -71,3 +71,8 @@ app.use(function(req, res){
        res.type('text/plain')
        res.status(404).send("Endpoint does not exist")
 })
+
+module.exports = {
+    helpScript: helpScript,
+    debugScript: debugScript
+};
