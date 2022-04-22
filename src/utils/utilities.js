@@ -49,4 +49,4 @@ function coinFlip() {
     coinFlips: coinFlips,
     countFlips: countFlips,
     flipACoin: flipACoin
-} ;
+};
