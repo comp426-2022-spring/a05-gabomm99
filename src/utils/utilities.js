@@ -42,4 +42,11 @@ function coinFlip() {
     let scenario = {call: call, flip: flipOut, result: outcome }
     return scenario
   }
-  
+
+
+  module.exports = {
+    coinFlip: coinFlip,
+    coinFlips: coinFlips,
+    countFlips: countFlips,
+    flipACoin: flipACoin
+} ;
