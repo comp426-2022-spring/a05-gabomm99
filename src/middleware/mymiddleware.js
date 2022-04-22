@@ -23,6 +23,8 @@ function helpScript(args){
     }
 }
 
+
+function debuScript(args, db, app){
 if(args.debug == true){
     console.log(args['debug'])
     app.get('/app/log/access', (req, res) =>{
@@ -38,6 +40,7 @@ if(args.debug == true){
       throw new Error('Error test successful.')
     })
   }
+}
 
 //App use() requirements
 app.use(express.urlencoded({ extended: true }));
@@ -63,3 +66,8 @@ app.use((req, res, next) => {
       logdata.referer, logdata.useragent)
       next()
     })
+
+app.use(function(req, res){
+       res.type('text/plain')
+       res.status(404).send("Endpoint does not exist")
+})
