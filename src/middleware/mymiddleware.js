@@ -24,7 +24,7 @@ function helpScript(args){
 }
 
 
-function debuScript(args, db, app){
+function debugScript(args, db, app){
 if(args.debug == true){
     console.log(args['debug'])
     app.get('/app/log/access', (req, res) =>{
