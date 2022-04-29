@@ -1,4 +1,5 @@
-// Route (endpoint) definitions go in this directory
+// Flip game definitions
+
 app.get('/app', (req, res) => {
     res.type('text/plain')
     res.status(200).end(`200 OK`)
