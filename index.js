@@ -28,7 +28,7 @@ midWare.debugScript(args, db, app)
 
 midWare.logScript(args, app)
 
-app.use(intData)
+app.use(midWare.intData)
 //MIDDLEWARE
 
 
