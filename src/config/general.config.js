@@ -2,7 +2,7 @@
 const fs = require('fs')
 const morgan = require('morgan')
 //"Importing database script"
-const db = require("/database.js")
+const db = require("../services/database.js")
 //Requiring express for the whole app
 const express = require('express')
 //const app = express()

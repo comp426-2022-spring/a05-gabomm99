@@ -1,4 +1,6 @@
 // Flip game definitions
+const config = require("../config/general.config.js")
+
 
 app.get('/app', (req, res) => {
     res.type('text/plain')
