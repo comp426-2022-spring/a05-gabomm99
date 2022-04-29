@@ -3,7 +3,9 @@
 //Requiring controllers
 const config = require("../config/general.config.js");
 const flipGame = require("../controllers/mycontrollers.js")
+const express = config.express
 const app = config.app
+app.use(express.json());
 
 //const gameRoutes = config.express.Router();
 
@@ -26,8 +28,8 @@ const manyFlips = app.get('/app/flips/:number', (req,res) => {
 })
 
 
-const headGuess = app.get('/app/flip/call/heads', (req, res) => {
-  var flipResult = flipGame.flipACoin("heads")
+const headGuess = app.get('/app/flip/call/:guess(heads|tails)', (req, res) => {
+  var flipResult = flipGame.flipACoin(req.params.guess)
   var call = flipResult.call
   var flip = flipResult.flip
   var result = flipResult.result
@@ -35,14 +37,17 @@ const headGuess = app.get('/app/flip/call/heads', (req, res) => {
   res.status(200).json({'call': call, 'flip': flip, 'result': result})
 })
 
-const tailGuess = app.get('/app/flip/call/tails', (req, res) => {
-  var flipResult = flipGame.flipACoin("tails")
-  var call = flipResult.call
-  var flip = flipResult.flip
-  var result = flipResult.result
-  res.type('application/json')
-  res.status(200).json({'call': call, 'flip': flip, 'result': result})
+
+const bodyFlips = app.post('/app/flip/coins/', (req, res) => {
+  const flips = coinFlips(req.body.number)
+  const count = countFlips(flips)
+  res.status(200).json({"raw":flips,"summary":count})
 })
 
-module.exports = {root, oneFlip, manyFlips, headGuess, tailGuess}
+const bodyCoin = app.post('/app/flip/call/', (req, res) => {
+  const game = flipACoin(req.body.guess)
+  res.status(200).json(game)
+})
+
+module.exports = {root, oneFlip, manyFlips, headGuess, bodyFlips, bodyCoin}
 

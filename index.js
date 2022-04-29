@@ -42,7 +42,9 @@ app.get(routes.manyFlips)
 
 app.get(routes.headGuess)
 
-app.get(routes.tailGuess)
+app.post(routes.bodyCoin)
+
+app.post(routes.bodyFlips)
 
 app.use(function(req, res){
   res.type('text/plain')
