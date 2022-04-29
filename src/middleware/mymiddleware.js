@@ -1,4 +1,9 @@
 // Middleware function definitions go here
+const config = require("../config/general.config.js");
+const flipGame = require("../controllers/mycontrollers.js")
+const app = config.app
+const db = config.db
+
 const help = (`
 server.js [options]
 
@@ -28,7 +33,7 @@ function debugScript(args, db, app){
 if(args.debug == true){
     console.log(args['debug'])
     app.get('/app/log/access', (req, res) =>{
-      console.log("in app/log/acces")
+      console.log("in app/log/access")
       try {
         const stmt = db.prepare('SELECT * FROM accesslog').all()
         res.status(200).json(stmt)
@@ -41,13 +46,22 @@ if(args.debug == true){
     })
   }
 }
+function logScript(args, app){
+  if(args.log == true){
+  console.log(args['debug'])
+  // Create a write stream to append to an access.log file
+  const accessLog = fs.createWriteStream('../../data/log/access.log', { flags: 'a' })
+  // Set up the access logging middleware
+  app.use(morgan('combined', { stream: accessLog }))
+}
+}
 
 //App use() requirements
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
-app.use((req, res, next) => {
+const intData = app.use((req, res, next) => {
     let logdata = {
       remoteaddr: req.ip,
       remoteuser: req.user,
@@ -67,12 +81,9 @@ app.use((req, res, next) => {
       next()
     })
 
-app.use(function(req, res){
-       res.type('text/plain')
-       res.status(404).send("Endpoint does not exist")
-})
 
 module.exports = {
     helpScript: helpScript,
-    debugScript: debugScript
+    debugScript: debugScript,
+    intData: intData
 };
