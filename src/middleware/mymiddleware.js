@@ -65,7 +65,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 
-const intData = app.use((req, res, next) => {
+intData = (req, res, next) => {
     let logdata = {
       remoteaddr: req.ip,
       remoteuser: req.user,
@@ -83,7 +83,7 @@ const intData = app.use((req, res, next) => {
       logdata.method, logdata.url, logdata.protocol, logdata.httpversion, logdata.status,
       logdata.referer, logdata.useragent)
       next()
-    })
+    }
 
 
 module.exports = {
