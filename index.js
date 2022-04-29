@@ -9,6 +9,7 @@ const midWare = require("./src/middleware/mymiddleware.js")
 const express = config.express
 const db = config.db
 const app = config.app
+app.use(express.static('./public'));
 
 
 //Using express to get body field trhough URL or json
