@@ -1,28 +1,32 @@
 // Flip game definitions
-const config = require("../config/general.config.js")
 
+//Requiring controllers
+const config = require("../config/general.config.js");
+const flipGame = require("../controllers/mycontrollers.js")
 
-app.get('/app', (req, res) => {
+//const gameRoutes = config.express.Router();
+
+const root = app.get('/app', (req, res) => {
     res.type('text/plain')
     res.status(200).end(`200 OK`)
 }
 )
-app.get('/app/flip', (req, res) => {
-    var flip = coinFlip()
+const oneFlip = app.get('/app/flip', (req, res) => {
+    var flip = flipGame.coinFlip()
     res.type('application/json')
     res.status(200).json({'flip': flip})
 })
 
-app.get('/app/flips/:number', (req,res) => {
-    var manyFlip = coinFlips(req.params.number)
+const manyFlips = app.get('/app/flips/:number', (req,res) => {
+    var manyFlip = flipGame.coinFlips(req.params.number)
     var sumFlip = countFlips(manyFlip)
     res.type('application/json')
     res.status(200).json({'raw': manyFlip, 'summary': sumFlip})
 })
 
 
-app.get('/app/flip/call/heads', (req, res) => {
-  var flipResult = flipACoin("heads")
+const headGuess = app.get('/app/flip/call/heads', (req, res) => {
+  var flipResult = flipGame.flipACoin("heads")
   var call = flipResult.call
   var flip = flipResult.flip
   var result = flipResult.result
@@ -30,8 +34,8 @@ app.get('/app/flip/call/heads', (req, res) => {
   res.status(200).json({'call': call, 'flip': flip, 'result': result})
 })
 
-app.get('/app/flip/call/tails', (req, res) => {
-  var flipResult = flipACoin("tails")
+const tailGuess = app.get('/app/flip/call/tails', (req, res) => {
+  var flipResult = flipGame.flipACoin("tails")
   var call = flipResult.call
   var flip = flipResult.flip
   var result = flipResult.result
@@ -39,7 +43,5 @@ app.get('/app/flip/call/tails', (req, res) => {
   res.status(200).json({'call': call, 'flip': flip, 'result': result})
 })
 
-app.use(function(req, res){
-  res.type('text/plain')
-  res.status(404).send("Endpoint does not exist")
-})
+module.exports = {root, oneFlip, manyFlips, headGuess, tailGuess}
+
