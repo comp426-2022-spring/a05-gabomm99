@@ -2,17 +2,7 @@ const args = require("minimist")(process.argv.slice(2))
 args['port', 'debug', 'log', 'help'];
 var port = args.port || process.env.PORT || 5555
 
-
-
-
-/*const fs = require('fs')
-const morgan = require('morgan')
-//"Importing database script"
-const db = require("./database.js")
-//Requiring express for the whole app
-const express = require('express')
-const app = express()
-*/
+// Importing general config
 const config = require("./src/config/general.config.js")
 const routes = require("./src/routes/someroutes.js")
 const midWare = require("./src/middleware/mymiddleware.js")
@@ -20,8 +10,6 @@ const express = config.express
 const db = config.db
 const app = config.app
 
-
-// Importing general config
 
 //Using express to get body field trhough URL or json
 app.use(express.urlencoded({ extended: true }));
