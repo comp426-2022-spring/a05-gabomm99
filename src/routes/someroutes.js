@@ -3,6 +3,7 @@
 //Requiring controllers
 const config = require("../config/general.config.js");
 const flipGame = require("../controllers/mycontrollers.js")
+const app = config.app
 
 //const gameRoutes = config.express.Router();
 
@@ -19,7 +20,7 @@ const oneFlip = app.get('/app/flip', (req, res) => {
 
 const manyFlips = app.get('/app/flips/:number', (req,res) => {
     var manyFlip = flipGame.coinFlips(req.params.number)
-    var sumFlip = countFlips(manyFlip)
+    var sumFlip = flipGame.countFlips(manyFlip)
     res.type('application/json')
     res.status(200).json({'raw': manyFlip, 'summary': sumFlip})
 })

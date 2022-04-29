@@ -4,6 +4,7 @@ var port = args.port || process.env.PORT || 5555
 
 
 
+
 /*const fs = require('fs')
 const morgan = require('morgan')
 //"Importing database script"
@@ -12,10 +13,14 @@ const db = require("./database.js")
 const express = require('express')
 const app = express()
 */
-const express = require('express')
-const app = express()
-// Importing general config
 const config = require("./src/config/general.config.js")
+const express = config.express
+const db = config.db
+const app = config.app
+const routes = require("./src/routes/someroutes.js")
+
+// Importing general config
+
 //Using express to get body field trhough URL or json
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -95,42 +100,16 @@ app.use((req, res, next) => {
 //MIDDLEWARE
 
 
-app.get('/app', (req, res) => {
-    res.type('text/plain')
-    res.status(200).end(`200 OK`)
-}
-)
-app.get('/app/flip', (req, res) => {
-    var flip = coinFlip()
-    res.type('application/json')
-    res.status(200).json({'flip': flip})
-})
+app.get(routes.root)
 
-app.get('/app/flips/:number', (req,res) => {
-    var manyFlip = coinFlips(req.params.number)
-    var sumFlip = countFlips(manyFlip)
-    res.type('application/json')
-    res.status(200).json({'raw': manyFlip, 'summary': sumFlip})
-})
+app.get(routes.oneFlip)
+
+app.get(routes.manyFlips)
 
 
-app.get('/app/flip/call/heads', (req, res) => {
-  var flipResult = flipACoin("heads")
-  var call = flipResult.call
-  var flip = flipResult.flip
-  var result = flipResult.result
-  res.type('application/json')
-  res.status(200).json({'call': call, 'flip': flip, 'result': result})
-})
+app.get(routes.headGuess)
 
-app.get('/app/flip/call/tails', (req, res) => {
-  var flipResult = flipACoin("tails")
-  var call = flipResult.call
-  var flip = flipResult.flip
-  var result = flipResult.result
-  res.type('application/json')
-  res.status(200).json({'call': call, 'flip': flip, 'result': result})
-})
+app.get(routes.tailGuess)
 
 app.use(function(req, res){
   res.type('text/plain')
