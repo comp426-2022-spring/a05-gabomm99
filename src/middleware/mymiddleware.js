@@ -2,7 +2,11 @@
 const config = require("../config/general.config.js");
 const flipGame = require("../controllers/mycontrollers.js")
 const app = config.app
+const express = config.express
 const db = config.db
+const morgan = config.morgan
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const help = (`
 server.js [options]
@@ -85,5 +89,6 @@ const intData = app.use((req, res, next) => {
 module.exports = {
     helpScript: helpScript,
     debugScript: debugScript,
+    logScript: logScript,
     intData: intData
 };

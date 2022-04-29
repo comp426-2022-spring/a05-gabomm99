@@ -29,7 +29,7 @@ app.use(express.json());
 
 
 // If --help or -h, echo help text to STDOUT and exit
-midWare.debugScript(args, db, app)
+midWare.helpScript(args)
 
 const server = app.listen(port, () =>{
     console.log('App is running on port %PORT%'.replace('%PORT%', port))
@@ -38,13 +38,7 @@ const server = app.listen(port, () =>{
 //MIDDLEWARE
 midWare.debugScript(args, db, app)
 
-if(args.log == true){
-  console.log(args['debug'])
-  // Create a write stream to append to an access.log file
-  const accessLog = fs.createWriteStream('access.log', { flags: 'a' })
-  // Set up the access logging middleware
-  app.use(morgan('combined', { stream: accessLog }))
-}
+midWare.logScript(args, app)
 
 app.use(intData)
 //MIDDLEWARE
