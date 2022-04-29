@@ -24,6 +24,24 @@ function flipCoin() {
         })
 }
 // Flip multiple coins and show coin images in table as well as summary results
+function flipCoins(number) {
+    fetch("/user/sign-in", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        redirect: 'follow',
+        body: JSON.stringify({"number" : document.getElementById("coinNums")})
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (result) {
+            console.log(result);
+
+            // Put summary results into the summary table.
+            document.getElementById("headFlipped").innerHTML = result.summary.heads;
+            document.getElementById("tailsFlipped").innerHTML = result.summary.tails;
+
 // Enter number and press button to activate coin flip series
 
 // Guess a flip by clicking either heads or tails button
