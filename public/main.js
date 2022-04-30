@@ -25,22 +25,24 @@ function flipCoin() {
 }
 // Flip multiple coins and show coin images in table as well as summary results
 function flipCoins() {
-    fetch("http://localhost:5555/app/flip/coins", {
-        method: 'POST',
+    fetch('http://localhost:5555/app/flip/coins', {
+        body: JSON.stringify({
+            "number": document.getElementById("coinNums").value
+        }),
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
         },
-        redirect: 'follow',
-        body: JSON.stringify({"number" : document.getElementById("coinNums")})
-        }).then(function (response) {
+        method: "post"
+        })
+        .then(function (response) {
             return response.json();
         })
         .then(function (result) {
             console.log(result);
 
             // Put summary results into the summary table.
-            document.getElementById("headFlipped").innerHTML = result.heads;
-            document.getElementById("tailsFlipped").innerHTML = result.tails;
+            document.getElementById("headFlipped").innerHTML = result.summary.heads;
+            document.getElementById("tailsFlipped").innerHTML = result.summary.tails;
         })
     }
 
