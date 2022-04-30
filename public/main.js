@@ -24,8 +24,8 @@ function flipCoin() {
         })
 }
 // Flip multiple coins and show coin images in table as well as summary results
-function flipCoins(number) {
-    fetch("/user/sign-in", {
+function flipCoins() {
+    fetch("http://localhost:5555/app/flip/coins", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

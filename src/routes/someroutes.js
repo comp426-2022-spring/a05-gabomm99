@@ -39,13 +39,13 @@ const headGuess = app.get('/app/flip/call/:guess(heads|tails)', (req, res) => {
 
 
 const bodyFlips = app.post('/app/flip/coins/', (req, res) => {
-  const flips = coinFlips(req.body.number)
-  const count = countFlips(flips)
+  const flips = flipGame.coinFlips(req.body.number)
+  const count = flipGame.countFlips(flips)
   res.status(200).json({"raw":flips,"summary":count})
 })
 
 const bodyCoin = app.post('/app/flip/call/', (req, res) => {
-  const game = flipACoin(req.body.guess)
+  const game = flipGame.flipACoin(req.body.guess)
   res.status(200).json(game)
 })
 
