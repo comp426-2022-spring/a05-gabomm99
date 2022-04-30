@@ -42,13 +42,13 @@ node server.js [options]
 #### Request cURL
 
 ```
-curl http://localhost:5000/app/
+curl http://localhost:5555/app/
 ```
 
 #### Response body
 
 ```
-{"message":"Your API works! (200)"}
+{"message": 200 OK%}
 ```
 
 #### Response headers
@@ -56,32 +56,41 @@ curl http://localhost:5000/app/
 ```
 HTTP/1.1 200 OK
 X-Powered-By: Express
-Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Type: text/plain; charset=utf-8
+Date: Sat, 30 Apr 2022 13:22:25 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
+Content-Length: 6
 ```
 
 ### /app/flip/ (GET)
 
+
 #### Request cURL
 
 ```
+curl http://localhost:5555/app/flip
 
 ```
 
 #### Response body
 
 ```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 16
+ETag: W/"10-N9e0DDykqBPnqphc8f4bzHcjsuM"
+Date: Sat, 30 Apr 2022 13:24:01 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5 
 
 ```
 
 #### Response headers
 
 ```
-
+{"flip":"tails"}% 
 ```
 
 ### /app/flips/:number/ (GET)
