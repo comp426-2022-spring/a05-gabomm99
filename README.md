@@ -76,6 +76,14 @@ curl http://localhost:5555/app/flip
 #### Response body
 
 ```
+{"flip":"tails"}
+ 
+
+```
+
+#### Response headers
+
+```
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
@@ -83,14 +91,8 @@ Content-Length: 16
 ETag: W/"10-N9e0DDykqBPnqphc8f4bzHcjsuM"
 Date: Sat, 30 Apr 2022 13:24:01 GMT
 Connection: keep-alive
-Keep-Alive: timeout=5 
+Keep-Alive: timeout=5
 
-```
-
-#### Response headers
-
-```
-{"flip":"tails"}% 
 ```
 
 ### /app/flips/:number/ (GET)
@@ -98,18 +100,27 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
+curl http://localhost:5555/app/flips/5
 
 ```
 
 #### Response body
 
 ```
-
+{"raw":["tails","tails","tails","heads","heads"],"summary":{"heads":2,"tails":3}}% 
 ```
 
 #### Response headers
 
 ```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 81
+ETag: W/"51-VAWFQ7WbroINpBxR6/H9erS/ySQ"
+Date: Sat, 30 Apr 2022 13:26:32 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 
 ```
 
