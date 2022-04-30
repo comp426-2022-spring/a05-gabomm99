@@ -39,8 +39,8 @@ function flipCoins() {
             console.log(result);
 
             // Put summary results into the summary table.
-            document.getElementById("headFlipped").innerHTML = result.summary.heads;
-            document.getElementById("tailsFlipped").innerHTML = result.summary.tails;
+            document.getElementById("headFlipped").innerHTML = result.heads;
+            document.getElementById("tailsFlipped").innerHTML = result.tails;
         })
     }
 
