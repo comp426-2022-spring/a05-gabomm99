@@ -40,9 +40,30 @@ function flipCoins() {
         .then(function (result) {
             console.log(result);
 
-            // Put summary results into the summary table.
             document.getElementById("headFlipped").innerHTML = result.summary.heads;
             document.getElementById("tailsFlipped").innerHTML = result.summary.tails;
+            var detailsTableBody = document.getElementById("verbose");
+            for (var i = 0; i < result.raw.length; i++) {
+
+                var newRow = document.createElement("tr");
+                var newNumber = document.createElement("td");
+                newNumber.innerHTML = i + 1;
+                newRow.appendChild(newNumber);
+
+                var thisResult = document.createElement("td");
+                thisResult.innerHTML = result.raw[i];
+                newRow.appendChild(thisResult);
+
+                var newPic = document.createElement("td");
+                var realImg = document.createElement("img");
+                realImg.setAttribute("src", "assets/img/" + result.raw[i] + ".png");
+                realImg.setAttribute("class", "smallcoin");
+                newPic.appendChild(realImg);
+                newRow.appendChild(newPic);
+
+            
+                detailsTableBody.appendChild(newRow);
+            }
         })
     }
 
