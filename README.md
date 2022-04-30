@@ -124,43 +124,33 @@ Keep-Alive: timeout=5
 
 ```
 
-### /app/flip/coin/ (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
-
-```
-
 ### /app/flip/call/:guess/ (GET)
 
 #### Request cURL
 
 ```
+curl http://localhost:5555/app/flip/call/tails
 
 ```
 
 #### Response body
 
 ```
+{"call":"tails","flip":"tails","result":"win"}
 
 ```
 
 #### Response headers
 
 ```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 46
+ETag: W/"2e-dW3ed8gY96gkWWRLhNdjW7lPbec"
+Date: Sat, 30 Apr 2022 13:30:50 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 
 ```
 
