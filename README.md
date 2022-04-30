@@ -219,12 +219,21 @@ Keep-Alive: timeout=5
 #### Response body
 
 ```
+[{"id":1,"remoteaddr":"::1","remoteuser":null,"time":1651259568145,"method":"GET","url":"/favicon.ico","protocol":"http","httpversion":"1.1","status":200,"referrer":"http://localhost:5555/app/flip","useragent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36"},{"id":2,"remoteaddr":"::1","remoteuser":null,"time":1651259573241,"method":"GET","url":"/app/flips","protocol":"http","httpversion":"1.1","status":200,"referrer":null,"useragent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36"},{"id":3,"remoteaddr":"::1","remoteuser":null,"time":1651263327151,"method":"GET","url":"/app/flips","protocol":"http","httpversion":"1.1","status":200,"referrer":null,"useragent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36"},{"id":4,"remoteaddr":"::1","remoteuser":null,"time":1651324179838,"method":"GET","url":"/app/flip/coins","protocol":"http","httpversion":"1.1","status":200,"referrer":null,"useragent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36"},{"id":5,"remoteaddr":"::1","remoteuser":null,"time":1651325423885,"method":"GET","url":"/app/call/tails","protocol":"http","httpversion":"1.1","status":200,"referrer":null,"useragent":"curl/7.77.0"},{"id":6,"remoteaddr":"::1","remoteuser":null,"time":1651326126144,"method":"POST","url":"/app/flips/coins","protocol":"http","httpversion":"1.1","status":200,"referrer":"http://localhost:5555/","useragent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Mobile Safari/537.36"}]
 
 ```
 
 #### Response headers
 
 ```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 1796
+ETag: W/"704-P6zT6sHW/CyyRoEgkeeJQ4VLSxs"
+Date: Sat, 30 Apr 2022 14:20:03 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 
 ```
 
