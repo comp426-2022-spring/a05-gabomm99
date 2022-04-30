@@ -66,7 +66,25 @@ function flipCoins() {
         })
     }
 
- 
-// Enter number and press button to activate coin flip series
-
 // Guess a flip by clicking either heads or tails button
+function guessFlip(guess) {
+    fetch('http://localhost:5555/app/flip/call', {
+        body: JSON.stringify({
+            "guess": guess
+        }),
+        headers: {
+            "Content-Type": "application/json",
+        },
+        method: "post"
+        })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (results) {
+            console.log(results);
+
+            document.getElementById("win?").innerHTML = results.result;
+            document.getElementById("winFlip").setAttribute("src", "assets/img/" + results.flip + ".png")
+
+        })
+}

@@ -71,7 +71,11 @@
       </ul> 
     </div>
     <div id="guess" class="hidden">
-      
+      <button id="tails" onclick="guessFlip('tails')">I guess Tails</button>
+      <button id="heads" onclick="guessFlip('heads')">I guess Heads</button>
+      <p>You have: <span id="win?"></span></p>
+      <p>The resulting flip was: <img src="" id="winFlip" class="smallcoin"></p>
+
     </div> 
 	<script src="main.js"></script>
   </body>
