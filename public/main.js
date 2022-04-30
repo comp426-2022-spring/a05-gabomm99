@@ -42,7 +42,7 @@ function flipCoins() {
 
             document.getElementById("headFlipped").innerHTML = result.summary.heads;
             document.getElementById("tailsFlipped").innerHTML = result.summary.tails;
-            var detailsTableBody = document.getElementById("verbose");
+            var verboseTable = document.getElementById("verbose");
             for (var i = 0; i < result.raw.length; i++) {
 
                 var newRow = document.createElement("tr");
@@ -61,8 +61,7 @@ function flipCoins() {
                 newPic.appendChild(realImg);
                 newRow.appendChild(newPic);
 
-            
-                detailsTableBody.appendChild(newRow);
+                verboseTable.appendChild(newRow);
             }
         })
     }
