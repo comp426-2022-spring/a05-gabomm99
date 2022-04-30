@@ -32,7 +32,7 @@ function flipCoins(number) {
         },
         redirect: 'follow',
         body: JSON.stringify({"number" : document.getElementById("coinNums")})
-        .then(function (response) {
+        }).then(function (response) {
             return response.json();
         })
         .then(function (result) {
@@ -41,7 +41,10 @@ function flipCoins(number) {
             // Put summary results into the summary table.
             document.getElementById("headFlipped").innerHTML = result.summary.heads;
             document.getElementById("tailsFlipped").innerHTML = result.summary.tails;
+        })
+    }
 
+ 
 // Enter number and press button to activate coin flip series
 
 // Guess a flip by clicking either heads or tails button
