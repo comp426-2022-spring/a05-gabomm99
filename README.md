@@ -1,18 +1,3 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7642879&assignment_repo_type=AssignmentRepo)
-# a05 Human Interface
-
-In this assignment, you will build an HTML human interface for your API. You will also document your API endpoints and consider package structure.
-
-## DO NOT CLONE THIS REPOSITORY DIRECTLY
-
-Use the GitHub classroom link instead: https://classroom.github.com/a/PUVGxeMe
-
-If you clone this repo directly, it will not be added to the organization as an individual repo associated with your account and you will not be able to push to it.
-
-## Instructions
-
-Full instructions for this assignment are available at: https://comp426.johndmart.in/a/05/
-
 <!-- DELETE EVERYTHING ABOVE THIS LINE -->
 
 # Coinserver Description
@@ -57,13 +42,43 @@ node server.js [options]
 #### Request cURL
 
 ```
-curl http://localhost:5000/app/
+curl http://localhost:5555/app/
 ```
 
 #### Response body
 
 ```
-{"message":"Your API works! (200)"}
+{"message": 200 OK%}
+```
+
+#### Response headers
+
+```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: text/plain; charset=utf-8
+Date: Sat, 30 Apr 2022 13:22:25 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Content-Length: 6
+```
+
+### /app/flip/ (GET)
+
+
+#### Request cURL
+
+```
+curl http://localhost:5555/app/flip
+
+```
+
+#### Response body
+
+```
+{"flip":"tails"}
+ 
+
 ```
 
 #### Response headers
@@ -72,30 +87,11 @@ curl http://localhost:5000/app/
 HTTP/1.1 200 OK
 X-Powered-By: Express
 Content-Type: application/json; charset=utf-8
-Content-Length: 35
-ETag: W/"23-KNmhzXgQhtEE5ovS3fuLixylNK0"
-Date: Thu, 07 Apr 2022 15:07:49 GMT
+Content-Length: 16
+ETag: W/"10-N9e0DDykqBPnqphc8f4bzHcjsuM"
+Date: Sat, 30 Apr 2022 13:24:01 GMT
 Connection: keep-alive
 Keep-Alive: timeout=5
-```
-
-### /app/flip/ (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
 
 ```
 
@@ -104,38 +100,27 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
+curl http://localhost:5555/app/flips/5
 
 ```
 
 #### Response body
 
 ```
-
+{"raw":["tails","tails","tails","heads","heads"],"summary":{"heads":2,"tails":3}}% 
 ```
 
 #### Response headers
 
 ```
-
-```
-
-### /app/flip/coin/ (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 81
+ETag: W/"51-VAWFQ7WbroINpBxR6/H9erS/ySQ"
+Date: Sat, 30 Apr 2022 13:26:32 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 
 ```
 
@@ -144,18 +129,28 @@ Keep-Alive: timeout=5
 #### Request cURL
 
 ```
+curl http://localhost:5555/app/flip/call/tails
 
 ```
 
 #### Response body
 
 ```
+{"call":"tails","flip":"tails","result":"win"}
 
 ```
 
 #### Response headers
 
 ```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 46
+ETag: W/"2e-dW3ed8gY96gkWWRLhNdjW7lPbec"
+Date: Sat, 30 Apr 2022 13:30:50 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 
 ```
 
@@ -224,32 +219,21 @@ Keep-Alive: timeout=5
 #### Response body
 
 ```
+[{"id":1,"remoteaddr":"::1","remoteuser":null,"time":1651259568145,"method":"GET","url":"/favicon.ico","protocol":"http","httpversion":"1.1","status":200,"referrer":"http://localhost:5555/app/flip","useragent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36"},{"id":2,"remoteaddr":"::1","remoteuser":null,"time":1651259573241,"method":"GET","url":"/app/flips","protocol":"http","httpversion":"1.1","status":200,"referrer":null,"useragent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36"},{"id":3,"remoteaddr":"::1","remoteuser":null,"time":1651263327151,"method":"GET","url":"/app/flips","protocol":"http","httpversion":"1.1","status":200,"referrer":null,"useragent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36"},{"id":4,"remoteaddr":"::1","remoteuser":null,"time":1651324179838,"method":"GET","url":"/app/flip/coins","protocol":"http","httpversion":"1.1","status":200,"referrer":null,"useragent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36"},{"id":5,"remoteaddr":"::1","remoteuser":null,"time":1651325423885,"method":"GET","url":"/app/call/tails","protocol":"http","httpversion":"1.1","status":200,"referrer":null,"useragent":"curl/7.77.0"},{"id":6,"remoteaddr":"::1","remoteuser":null,"time":1651326126144,"method":"POST","url":"/app/flips/coins","protocol":"http","httpversion":"1.1","status":200,"referrer":"http://localhost:5555/","useragent":"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Mobile Safari/537.36"}]
 
 ```
 
 #### Response headers
 
 ```
-
-```
-
-### /app/log/access/ (GET)
-
-#### Request cURL
-
-```
-
-```
-
-#### Response body
-
-```
-
-```
-
-#### Response headers
-
-```
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 1796
+ETag: W/"704-P6zT6sHW/CyyRoEgkeeJQ4VLSxs"
+Date: Sat, 30 Apr 2022 14:20:03 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
 
 ```
 
